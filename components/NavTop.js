@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import AppContext from "../Context/AppContext";
 import { useRouter } from "next/router";
-import FrameImage from "../Frame-296.svg"
+import ImageLogo from "../Frame-296.svg"
 import Image from "next/image";
 
 export default function NavTop() {
@@ -40,8 +40,9 @@ export default function NavTop() {
           </svg>
         </div>
         <div className="md:flex items-center w-full justify-evenly hidden">
-          <div style={{width:"320px" , cursor:"pointer"}}>
-            <Image src={FrameImage} />
+          <div style={{width:"290px"}}>
+
+          <Image src={ImageLogo} />
           </div>
           <div className="flex items-center lg:space-x-4 md:space-x-3">
             <div

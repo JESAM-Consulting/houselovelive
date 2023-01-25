@@ -32,6 +32,8 @@ export default function Step5() {
   };
 
   const onSubmit = async (data) => {
+
+    
     console.log(data);
     const sendData = {
       vorname: data.name,
@@ -42,7 +44,7 @@ export default function Step5() {
       dachform: userData.step2,
       telefon: data.telefon,
       email: data.email,
-      leadherkunft: "https://www.solar-pvcheck.de",
+      leadherkunft: "https://houselovelive.netlify.app",
     };
     await axios
       .post(
@@ -56,7 +58,6 @@ export default function Step5() {
         setStep(step + 1);
       })
 
-
       const Data = {
         name: data.name,
         plz: userData.step4,
@@ -66,7 +67,7 @@ export default function Step5() {
         dachform: userData.step2,
         telefon: data.telefon,
         email: data.email,
-        leadherkunft: "https://www.solar-pvcheck.de",
+        leadherkunft: "https://houselovelive.netlify.app",
         project:"houselovelive"
       };
 
@@ -80,40 +81,40 @@ export default function Step5() {
         myForm.current.reset();
         setStep(step + 1);
       })
-
-
       .catch((error) => {
         console.log(error);
       });
 
-    const DataToSend = {
-      from: "FE Leads Generator",
-      to: forEmail,
-      subject: "FE Leads Generator",
-      body: `    
-        <strong>FE Leads Generator</strong> <br />
-        <strong>Vor- & Nachname: </strong> ${data.name} <br />
-        <strong>Telefonnummer : </strong> ${data.telefon} <br />
-        <strong>E-Mailadresse: </strong> ${data.email} <br />                
-        <strong>Wie hoch ist Ihr Stromverbrauch?: </strong> ${
-          userData.step1
-        } kWh/Jahr <br />                
-        <strong>Welche Dachform hat Ihr Haus?: </strong> ${
-          userData.step2
-        } <br />                
-        <strong>Sind Sie Eigentümer der Immobilie?: </strong> ${
-          userData.step3[0] ? " Ja " : " Nein"
-        } <br />                
-        <strong>Bewohnen Sie die Immobilie selbst?: </strong> ${
-          userData.step3[1] ? " Ja" : " Nein"
-        } <br />  
-        <strong>Welche Dachform hat Ihr Haus?: </strong> ${
-          userData.step4
-        } <br />                                    
-        `,
-    };
+      const DataToSend = {
+        from: "FE Leads Generator",
+        to: forEmail,
+        subject: "FE Leads Generator",
+        body: `    
+          <strong>FE Leads Generator</strong> <br />
+          <strong>Vor- & Nachname: </strong> ${data.name} <br />
+          <strong>Telefonnummer : </strong> ${data.telefon} <br />
+          <strong>E-Mailadresse: </strong> ${data.email} <br />                
+          <strong>Wie hoch ist Ihr Stromverbrauch?: </strong> ${
+            userData.step1
+          } kWh/Jahr <br />                
+          <strong>Welche Dachform hat Ihr Haus?: </strong> ${
+            userData.step2
+          } <br />                
+          <strong>Sind Sie Eigentümer der Immobilie?: </strong> ${
+            userData.step3[0] ? " Ja " : " Nein"
+          } <br />                
+          <strong>Bewohnen Sie die Immobilie selbst?: </strong> ${
+            userData.step3[1] ? " Ja" : " Nein"
+          } <br />  
+          <strong>Welche Dachform hat Ihr Haus?: </strong> ${
+            userData.step4
+          } <br />                                    
+          `,
+      };
+  
+      const respuesta = await sendForm(DataToSend);
 
-    const respuesta = await sendForm(DataToSend);
+   
     // if (respuesta.data.cod_resp === "000") {
     //   myForm.current.reset();
 
@@ -186,7 +187,7 @@ export default function Step5() {
         </div>
         <button
           type="submit"
-          className="mt-4 bg-yellow-1 outline-none lg:px-12 lg:text-base md:px-8 font-visby font-bold py-3 rounded-md hover:cursor-pointer text-white transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#977c6d] md:text-sm md:w-auto w-full">
+          className="mt-4 bg-yellow-1 outline-none lg:px-12 lg:text-base md:px-8 font-visby font-bold py-3 rounded-md hover:cursor-pointer text-white transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#93796b] md:text-sm md:w-auto w-full">
           Angebote erhalten kostenlos & unverbindlich
         </button>
 
