@@ -25,15 +25,13 @@ export default function Step5() {
 
   const config = {
     headers: {
-      "X-API-Account": "71658",
+      "X-API-Account": "29355345",
       "X-API-Key":
-        "OiJKV1QiLCJub25jZSI6IjJFY0RuMHAtLW9YQU1vVnZtaDZYaEFNQ0lIcVBEMzRvaUppWm44cktmY0kiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyIsImtpZCI6ImpTMVhvMU9XRGpfNTJ2YndHTmd2UU8yVnpNYyJ9feKq9lzfS9RoR4pWxajCpaLVk8EcQBGsy4",
+        "m5ldCGciqqTAwMDAtYzAwMMy0wMDAwLd2UU8yqnpNYyI8c3aW5k5MhbsImtpZCI6ImpTMVhvMU9XAwMDAwMNTJ2YndHTmd2UU8DAwMDAiLCJpc3MiOiJodHRwb3dzLm85MjC0wMD1NiGpfNTJ2YnIqwdsIng1dCI6ImpTMVhvMU9XRdHTmgsdgx3425OiJSUzIRGpfyVn.eyJhdWQiOiIwMDAwMDpNYyJ9AwNkZ5ldC",
     },
   };
 
   const onSubmit = async (data) => {
-
-    
     console.log(data);
     const sendData = {
       vorname: data.name,
@@ -56,22 +54,22 @@ export default function Step5() {
         myForm.current.reset();
 
         setStep(step + 1);
-      })
+      });
 
-      const Data = {
-        name: data.name,
-        plz: userData.step4,
-        stromverbrauch: userData.step1,
-        Eigentuemer: userData?.step3?.[0],
-        // isLiveInOwnProperty: userData?.step3?.[1],
-        dachform: userData.step2,
-        telefon: data.telefon,
-        email: data.email,
-        leadherkunft: "https://houselovelive.netlify.app",
-        project:"houselovelive"
-      };
+    const Data = {
+      name: data.name,
+      plz: userData.step4,
+      stromverbrauch: userData.step1,
+      Eigentuemer: userData?.step3?.[0],
+      // isLiveInOwnProperty: userData?.step3?.[1],
+      dachform: userData.step2,
+      telefon: data.telefon,
+      email: data.email,
+      leadherkunft: "https://houselovelive.netlify.app",
+      project: "houselovelive",
+    };
 
-      await axios
+    await axios
       .post(
         `https://fe-lead-commen-api.rejoicehub.com/FE_API/lead_api/v1/contact`,
         Data,
@@ -85,11 +83,11 @@ export default function Step5() {
         console.log(error);
       });
 
-      const DataToSend = {
-        from: "FE Leads Generator",
-        to: forEmail,
-        subject: "FE Leads Generator",
-        body: `    
+    const DataToSend = {
+      from: "FE Leads Generator",
+      to: forEmail,
+      subject: "FE Leads Generator",
+      body: `    
           <strong>FE Leads Generator</strong> <br />
           <strong>Vor- & Nachname: </strong> ${data.name} <br />
           <strong>Telefonnummer : </strong> ${data.telefon} <br />
@@ -110,11 +108,10 @@ export default function Step5() {
             userData.step4
           } <br />                                    
           `,
-      };
-  
-      const respuesta = await sendForm(DataToSend);
+    };
 
-   
+    const respuesta = await sendForm(DataToSend);
+
     // if (respuesta.data.cod_resp === "000") {
     //   myForm.current.reset();
 
@@ -187,7 +184,8 @@ export default function Step5() {
         </div>
         <button
           type="submit"
-          className="mt-4 bg-yellow-1 outline-none lg:px-12 lg:text-base md:px-8 font-visby font-bold py-3 rounded-md hover:cursor-pointer text-white transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#93796b] md:text-sm md:w-auto w-full">
+          className="mt-4 bg-yellow-1 outline-none lg:px-12 lg:text-base md:px-8 font-visby font-bold py-3 rounded-md hover:cursor-pointer text-white transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#93796b] md:text-sm md:w-auto w-full"
+        >
           Angebote erhalten kostenlos & unverbindlich
         </button>
 
