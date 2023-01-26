@@ -31,13 +31,48 @@ export default function Home() {
     if (step == 1 || step == 2 || step == 4) return true;
     return false;
   };
+  const [dimension, setDimension] = useState(1234);
 
   useEffect(() => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    const handleRezise = () => {
+      if (typeof windows !== undefined) {
+        setDimension(window.innerWidth);
+      }
+    };
+    handleRezise();
+    window.addEventListener("resize", handleRezise);
+
+    return window.removeEventListener("resize", handleRezise);
+  }, [dimension]);
+  console.log("dimension", dimension);
+  useEffect(() => {
+    if (dimension < 900 && step != 10 && step != 0) {
+      if (step == 5) {
+        window.scroll({
+          top: 90,
+          left: 0,
+          behavior: "smooth",
+        });
+      } else if (step == 6) {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      } else {
+        window.scroll({
+          top: 210,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
     if (step == 1) {
       setIndex(0);
     }
@@ -45,10 +80,43 @@ export default function Home() {
       setIndex(1);
     }
 
-    if (step == 4) {
+    if (step == 3) {
       setIndex(2);
     }
-  }, [step]);
+    if (step == 4) {
+      setIndex(6);
+    }
+
+    if (step == 5) {
+      setIndex(3);
+    }
+
+    if (step == 6) {
+      setIndex(4);
+    }
+
+    if (step == 7) {
+      setIndex(5);
+    }
+  }, [step, dimension]);
+
+  // useEffect(() => {
+  //   window.scroll({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  //   if (step == 1) {
+  //     setIndex(0);
+  //   }
+  //   if (step == 2) {
+  //     setIndex(1);
+  //   }
+
+  //   if (step == 4) {
+  //     setIndex(2);
+  //   }
+  // }, [step]);
 
   const [progress, setProgress] = useState("w-0");
   const [marked, setMarked] = useState([false, false, false, false, false]);
@@ -143,16 +211,18 @@ export default function Home() {
               <div className="flex items-center lg:space-x-4 md:space-x-3 my-1">
                 <div
                   data-active={step <= 6 ? true : false}
-                  className="circle rounded-full p-[1rem] bg-white  relative box-border border-yellow-1 border transition-all ease-in-out duration-500">
+                  className="circle rounded-full p-[1rem] bg-white  relative box-border border-yellow-1 border transition-all ease-in-out duration-500"
+                >
                   <div className="numero absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 font-bold text-base transition-all ease-in-out duration-500">
                     1
                   </div>
                 </div>
               </div>
-              <div className="flex items-center lg:space-x-4 md:space-x-3">
+              <div className="flex items-center lg:space-x-4 md:space-x-3 ">
                 <div
                   data-active={step >= 5 ? true : false}
-                  className="circle rounded-full p-[1rem] bg-white  relative box-border border-yellow-1 border transition-all ease-in-out duration-500">
+                  className="circle rounded-full p-[1rem] bg-white  relative box-border border-yellow-1 border transition-all ease-in-out duration-500"
+                >
                   <div className="numero absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 font-bold text-base transition-all ease-in-out duration-500">
                     2
                   </div>
@@ -161,7 +231,8 @@ export default function Home() {
               <div className="flex items-center lg:space-x-4 md:space-x-3">
                 <div
                   data-active={step == 6 ? true : false}
-                  className="circle rounded-full p-[1rem] bg-white  relative box-border border-yellow-1 border transition-all ease-in-out duration-500">
+                  className="circle rounded-full p-[1rem] bg-white  relative box-border border-yellow-1 border transition-all ease-in-out duration-500"
+                >
                   <div className="numero absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2 font-bold text-base transition-all ease-in-out duration-500">
                     3
                   </div>
@@ -185,7 +256,8 @@ export default function Home() {
               setStep(step - 1);
             }}
             data-show={step != 0 && step != 6}
-            className={`bg-yellow-1 mb-4 mx-6 md:hidden z-50 backButton relative group hover:cursor-pointer  transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#93796b] flex justify-center items-center space-x-3 font-roboto rounded-md py-2.5 md:w-32 w-10 text-white text-center`}>
+            className={`bg-yellow-1 mb-4 mx-6 md:hidden z-50 backButton relative group hover:cursor-pointer  transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#93796b] flex justify-center items-center space-x-3 font-roboto rounded-md py-2.5 md:w-32 w-10 text-white text-center`}
+          >
             <span className="w-3 group-hover:-translate-x-[0.18rem] transition-all ease-in-out duration-150">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path
@@ -198,7 +270,8 @@ export default function Home() {
           <div
             className={`w-full md:absolute relative bg-[#EFEFEF] md:left-0 md:bottom-0 md:mt-0 mt-6 ${
               isShow() ? " block " : " hidden "
-            }`}>
+            }`}
+          >
             <div className="text-[#8C8C8C] lg:px-20 md:px-6 lg:py-5 py-3 px-6">
               <div className="flex mb-4 items-start space-x-2">
                 <img src="/images/help.svg" alt="" className="mt-1.5" />
@@ -221,7 +294,8 @@ export default function Home() {
               step != 5
                 ? " right-4 bottom-3 "
                 : " right-[5rem] bottom-[5.5rem] "
-            } backButton group hover:cursor-pointer  transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#93796b] flex justify-center items-center space-x-3 font-roboto rounded-md py-2.5 md:w-32 w-10 text-white text-center`}>
+            } backButton group hover:cursor-pointer  transition-all ease-in-out duration-150 hover:bg-opacity-90 hover:shadow-md hover:shadow-[#93796b] flex justify-center items-center space-x-3 font-roboto rounded-md py-2.5 md:w-32 w-10 text-white text-center`}
+          >
             <span className="w-3 group-hover:-translate-x-1 transition-all ease-in-out duration-150">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path

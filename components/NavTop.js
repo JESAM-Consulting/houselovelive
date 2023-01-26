@@ -41,7 +41,7 @@ export default function NavTop() {
         </div>
         <div className="md:flex items-center w-full justify-evenly">
           <div style={{width:"260px"}} className="hover:cursor-pointer lg:ml-10  py-3">
-              <Image src={ImageLogo} className="md:w-60 w-52"/>
+              <img src="/images/new-logo.webp" className="md:w-60 w-52" alt="" />
           </div>
           <div className="md:flex items-center w-full justify-evenly hidden">
             <div className="flex items-center lg:space-x-4 md:space-x-3">

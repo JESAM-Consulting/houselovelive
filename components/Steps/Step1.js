@@ -52,6 +52,7 @@ export default function Step1() {
                 step1: data,
               });
             } else {
+              window.scrollTo(0, 500);
               setUserData({
                 ...userData,
                 step1: "weiß ich nicht",
