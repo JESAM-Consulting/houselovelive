@@ -42,9 +42,9 @@ export default function Home() {
     if (step >= 1 && step <= 7) return true;
     return false;
   };
+  const [dimension, setDimension] = useState(1234);
 
   const [open, setOpen] = useState(false);
-  const [dimension, setDimension] = useState(1234);
 
   useEffect(() => {
     const handleRezise = () => {
@@ -231,7 +231,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center lg:space-x-4 md:space-x-3">
+              <div className="flex items-center lg:space-x-4 md:space-x-3 ">
                 <div
                   data-active={step >= 8 ? true : false}
                   className="circle rounded-full p-[1rem] bg-white  relative box-border border-green-1 border transition-all ease-in-out duration-500">
