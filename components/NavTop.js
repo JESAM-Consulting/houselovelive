@@ -19,13 +19,13 @@ export default function NavTop() {
 
   return (
     <div>
-      <div className="flex lg:px-10 md:px-6 px-6 bg-white items-center md:min-h-[8vh]">
+      <div className="flex lg:px-10 md:px-6 px-6 bg-white items-center md:min-h-[10vh]">
         <div
           className={`hover:cursor-pointer lg:ml-10  py-3`}
           onClick={() => {
             router.push("/");
           }}>
-          <img src="/images/logo.webp" alt="" className="md:w-60 w-52" />
+          <img src="/images/logo.webp" alt="" className="md:w-80 w-52" />
         </div>
         <div className="md:flex items-center w-full justify-evenly hidden">
           <div className="flex items-center lg:space-x-4 md:space-x-3">
